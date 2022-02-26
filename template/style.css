@@ -40,14 +40,6 @@ a {
 a:hover {
   color: #ff8000;
 }
-h1 {
-  font-size: 1.8rem;
-  padding: 1rem 0;
-}
-h2 {
-  font-size: 1.6rem;
-  padding: 1rem 0;
-}
 /* Header */
 header a {
   color: #ffffff;
