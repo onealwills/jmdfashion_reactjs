@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
 // reducer to respond to actions
 export const cartReducer = (state = { cartItems: [] }, action) => {
@@ -20,6 +20,12 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         //   concatenate ...state.cartItems with the new "item"
         return { ...state, cartItems: [...state.cartItems, item] };
       }
+    case CART_REMOVE_ITEM:
+      return {
+        ...state,
+        // the ones that will be safe are the id that is not equal to the payload product id
+        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
     default:
       return state;
   }

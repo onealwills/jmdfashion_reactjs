@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
 // dispatching action
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
@@ -16,5 +16,10 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
     },
   });
   //   setitem accepts 2 parameter, the key and the value being a string. get access to the cartitems in redux store use getState() from redux thunk
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
+
+export const removeFromCart = (productId) => (dispatch, getState) => {
+  dispatch({ type: CART_REMOVE_ITEM, payload: productId });
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
