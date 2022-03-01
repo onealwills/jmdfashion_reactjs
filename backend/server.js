@@ -1,10 +1,18 @@
 /* eslint-disable no-unused-vars */
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 
+dotenv.config();
+
 const app = express();
+
+// without the two lines when posting to users/sigin = ""message": "Cannot read property 'email' of undefined""
+// also known as middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
   process.env.MONGODB_URL || "mongodb://localhost/jmdfashion_reactjs",
