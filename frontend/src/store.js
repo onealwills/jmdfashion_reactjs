@@ -5,9 +5,16 @@ import {
   productDetailsReducer,
   productListReducer,
 } from "./reducers/productReducers";
+import { userRegisterReducer, userSigninReducer } from "./reducers/userReducer";
 
 // redux thunk makes it possible to send ajax request in redux action
 const initialState = {
+  userSignin: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
+  },
+
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
@@ -19,6 +26,8 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  userSignin: userSigninReducer,
+  userRegister: userRegisterReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // enhancer makes it possible for redux to show in chrome developing tool

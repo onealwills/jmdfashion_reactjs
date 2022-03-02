@@ -5,7 +5,7 @@ import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
-} from "../constants/ProductConstants";
+} from "../constants/productConstants";
 
 // reducer to respond to actions
 export const productListReducer = (
